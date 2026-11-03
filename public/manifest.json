@@ -1,0 +1,30 @@
+{
+  "name": "Mateo Padilla Peña - Desarrollador Full Stack",
+  "short_name": "Mateo Portfolio",
+  "description": "Portfolio de Mateo Padilla Peña, desarrollador Full Stack junior en Colombia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/portfolio-image.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/portfolio-image.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "es",
+  "dir": "ltr"
+}

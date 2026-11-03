@@ -1,0 +1,219 @@
+{
+  "personal": {
+    "name": "Mateo Padilla Peña",
+    "role": "Desarrollador FullStack",
+    "bio": "Desarrollador Full Stack con más de un año de experiencia especializado en JavaScript y Python, con enfoque principal en desarrollo backend. He participado en proyectos internacionales trabajando de forma remota para empresas en Estados Unidos y Argentina, desarrollando soluciones escalables utilizando tecnologías como NestJS, Vue.js, Firebase y BigQuery.",
+    "email": "mateopadilla707@gmail.com",
+    "location": "Medellín, Colombia",
+    "phone": "+57 3216187473",
+    "linkedin": "linkedin.com/in/mateo-padilla-peña",
+    "github": "github.com/Mateo-Padilla-Pena"
+  },
+
+  "about": {
+    "story": "Mi experiencia incluye el desarrollo de plataformas web complejas y aplicaciones móviles, siempre priorizando la calidad del código, la escalabilidad y la alineación con objetivos empresariales. Me especializo en crear soluciones robustas y eficientes que resuelvan problemas reales del mundo empresarial.",
+    "skills": {
+      "backend": [
+        {
+          "name": "JavaScript",
+          "logo": "javascript"
+        },
+        {
+          "name": "Python",
+          "logo": "python"
+        },
+        {
+          "name": "NestJS",
+          "logo": "nestjs"
+        },
+        {
+          "name": "Django",
+          "logo": "django"
+        },
+        {
+          "name": "ExpressJS",
+          "logo": "expressjs"
+        }
+      ],
+      "frontend": [
+        {
+          "name": "Vue.js",
+          "logo": "vuejs"
+        },
+        {
+          "name": "Vuetify",
+          "logo": "vuetify"
+        },
+        {
+          "name": "HTML/CSS",
+          "logo": "html5"
+        },
+        {
+          "name": "Tailwind CSS",
+          "logo": "tailwindcss"
+        },
+        {
+          "name": "Bootstrap",
+          "logo": "bootstrap"
+        }
+      ],
+      "services": [
+        {
+          "name": "Google Cloud",
+          "logo": "googlecloud"
+        },
+        {
+          "name": "Firebase",
+          "logo": "firebase"
+        },
+        {
+          "name": "Firestore",
+          "logo": "firestore"
+        },
+        {
+          "name": "BigQuery",
+          "logo": "bigquery"
+        },
+        {
+          "name": "SQL",
+          "logo": "sql"
+        }
+      ]
+    }
+  },
+
+  "projects": [
+    {
+      "id": 1,
+      "title": "Horus",
+      "description": "Desarrollé una plataforma integral de gestión veterinaria que permite a los profesionales administrar pacientes, clientes, citas e inventario de productos de manera eficiente. La solución digitaliza las operaciones clínicas veterinarias, reemplazando métodos tradicionales por un sistema moderno y organizado. Desarrollada con NestJS, ReactJS y Tailwind CSS.",
+      "tech": ["NestJS", "ReactJS", "TypeScript", "Tailwind CSS", "REST APIs"],
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      "demo": "#",
+      "code": "#",
+      "impact": "Digitalización de clínicas veterinarias"
+    },
+    {
+      "id": 2,
+      "title": "App de Quizzes Criptomonedas",
+      "description": "Desarrollé el backend de una aplicación móvil de quizzes sobre criptomonedas utilizando NestJS y TypeScript. Implementé la integración con World App mediante APIs RESTful.",
+      "tech": ["NestJS", "TypeScript", "APIs RESTful", "World App"],
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      "demo": "#",
+      "code": "#",
+      "impact": "Sistema de autenticación, pagos y puntuaciones"
+    },
+    {
+      "id": 3,
+      "title": "My Sales",
+      "description": "Desarrollé una plataforma de gestión empresarial para pequeñas empresas, incluyendo gestión de categorías, productos, ventas y análisis estadísticos. La solución permite a las empresas digitalizar sus operaciones comerciales, reemplazando métodos tradicionales como notas en celular por un sistema profesional y escalable. Desarrollada con NestJS, Vue.js y Vuetify.",
+      "tech": ["NestJS", "Vue.js", "Vuetify", "TypeScript", "REST APIs"],
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+      "demo": "#",
+      "code": "#",
+      "impact": "Digitalización de operaciones comerciales"
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Boston Project LLC",
+      "position": "Desarrollador FullStack",
+      "period": "09/2024 – Actualidad",
+      "location": "Massachusetts, Estados Unidos",
+      "description": "Desarrollo y mantenimiento de la plataforma principal de la empresa utilizando Vue.js, Vuetify y JavaScript en el frontend, integrada con Firebase Storage, Firestore y BigQuery para el backend. Implemento nuevas funcionalidades siguiendo mejores prácticas de desarrollo, optimizando el rendimiento de consultas en BigQuery y gestionando el almacenamiento de datos en la nube.",
+      "achievements": [
+        "Desarrollo de plataforma principal",
+        "Optimización de consultas BigQuery",
+        "Gestión de almacenamiento en la nube",
+        "Implementación de mejores prácticas"
+      ]
+    },
+    {
+      "company": "Eclisse",
+      "position": "Desarrollador Backend",
+      "period": "02/2025 – 05/2025",
+      "location": "Buenos Aires, Argentina",
+      "description": "Desarrollé el backend de una aplicación móvil de quizzes sobre criptomonedas utilizando NestJS y TypeScript. Implementé la integración con World App mediante APIs RESTful, gestionando la autenticación de usuarios y el sistema de puntuaciones.",
+      "achievements": [
+        "Desarrollo backend con NestJS",
+        "Integración con World App",
+        "Sistema de autenticación",
+        "Arquitectura de base de datos",
+        "Gestion de pagos con world app"
+      ]
+    }
+  ],
+
+  "skills": {
+    "backend": ["Python", "Django", "JavaScript", "ExpressJS", "NestJS"],
+    "frontend": [
+      "HTML",
+      "CSS",
+      "VueJS",
+      "Vuetify",
+      "Bootstrap",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    "database": ["SQL", "Firestore", "Realtime Database", "BigQuery"],
+    "cloud": ["Firebase", "Firebase Storage", "Google Cloud"]
+  },
+
+  "certifications": [
+    "Rest API Intermediate (HackerRank)",
+    "JavaScript Intermediate (HackerRank)",
+    "Problem Solving Basic (HackerRank)",
+    "JavaScript Basic (HackerRank)",
+    "Python Basic (HackerRank)"
+  ],
+
+  "courses": [
+    {
+      "name": "Java",
+      "institution": "Edutin Academy"
+    },
+    {
+      "name": "Python",
+      "institution": "Edutin Academy"
+    },
+    {
+      "name": "Django",
+      "institution": "OpenBootcamp"
+    }
+  ],
+
+  "languages": [
+    {
+      "name": "Español",
+      "level": "Nativo",
+      "percentage": 100
+    },
+    {
+      "name": "Inglés",
+      "level": "B2",
+      "percentage": 75
+    }
+  ],
+
+  "references": [
+    {
+      "name": "Sebastian Padilla",
+      "position": "Comerciante, Korintio",
+      "email": "sebastianpadilladuque@gmail.com",
+      "phone": "+57 320 6663177"
+    },
+    {
+      "name": "Sebastian Rua",
+      "position": "Ingeniero de Datos, Bancolombia",
+      "email": "ruasebas@gmail.com",
+      "phone": "+57 3162953650"
+    },
+    {
+      "name": "Julian Peña",
+      "position": "Docente cátedra de programación, Universidad Pascual Bravo",
+      "email": "julian.pena@pascualbravo.edu.co",
+      "phone": "+57 302 6005450"
+    }
+  ]
+}
