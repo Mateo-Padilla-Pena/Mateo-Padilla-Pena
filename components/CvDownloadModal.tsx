@@ -88,36 +88,7 @@ export const CvDownloadModal: React.FC<CvDownloadModalProps> = ({
     const filename = `Mateo_Padilla_CV_${lang.toUpperCase()}.pdf`;
 
     try {
-      // 1. Generación vectorial dinámica en el servidor (/api/cv)
-      const response = await fetch(`/api/cv?t=${Date.now()}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          data: targetData,
-          lang,
-          theme: "light",
-        }),
-        cache: "no-store",
-      });
-
-      if (
-        response.ok &&
-        response.headers.get("Content-Type")?.includes("application/pdf")
-      ) {
-        const pdfBlob = await response.blob();
-        const blobUrl = URL.createObjectURL(pdfBlob);
-        const link = document.createElement("a");
-        link.href = blobUrl;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 3000);
-        onClose();
-        return;
-      }
-
-      // 2. Respaldo dinámico en el navegador (html2pdf.js)
+      // Generación dinámica en el navegador (html2pdf.js con corrección de FontMetrics)
       const avatarBase64 = await getSquareCroppedAvatarBase64(
         "/portfolio-image.jpeg"
       );
@@ -157,7 +128,8 @@ export const CvDownloadModal: React.FC<CvDownloadModalProps> = ({
         const pdfHeightMm = Math.ceil((heightPx * pdfWidthMm) / widthPx) + 2;
 
         const html2pdfModule = await import("html2pdf.js");
-        const html2pdf = html2pdfModule.default || html2pdfModule;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const html2pdf: any = html2pdfModule.default || html2pdfModule;
 
         await html2pdf()
           .set({

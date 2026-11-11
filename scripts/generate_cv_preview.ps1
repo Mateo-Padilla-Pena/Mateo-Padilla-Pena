@@ -1317,31 +1317,7 @@ $htmlTemplate = @'
       }
 
       try {
-        // 1. Si se sirve desde el servidor Next.js (http/https), generar dinámicamente vía /api/cv
-        if (window.location.protocol.startsWith("http")) {
-          try {
-            const res = await fetch("/api/cv?lang=" + currentLang + "&theme=" + currentTheme + "&t=" + Date.now(), {
-              method: "GET",
-              cache: "no-store"
-            });
-            if (res.ok && (res.headers.get("Content-Type") || "").indexOf("application/pdf") !== -1) {
-              const blob = await res.blob();
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = filename;
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-              setTimeout(function() { URL.revokeObjectURL(url); }, 2500);
-              return;
-            }
-          } catch (apiErr) {
-            // Continuar con generación dinámica en cliente
-          }
-        }
-
-        // 2. Generación dinámica en el navegador (html2pdf.js con corrección de FontMetrics)
+        // Generación dinámica en el navegador (html2pdf.js con corrección de FontMetrics)
         const target = document.getElementById("cv-export-root");
         if (typeof html2pdf !== "undefined" && target) {
           if (document.fonts && document.fonts.ready) {
