@@ -1,8 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MobileHeader from "./MobileHeader";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
+import ProjectsDropdown from "./ProjectsDropdown";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NavigationProps {
@@ -11,9 +15,9 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ name }) => {
   const { language } = useLanguage();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,75 +25,81 @@ const Navigation: React.FC<NavigationProps> = ({ name }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    setTimeout(() => setIsVisible(true), 500);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const getAnchor = (hash: string) => {
+    return isHomePage ? hash : `/${hash}`;
+  };
 
   return (
     <>
       <MobileHeader name={name} />
 
-      <nav
-        className="hidden md:block fixed top-6 left-1/2 z-50"
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transform: `translateX(-50%) translateY(${
-            isVisible ? "0px" : "-20px"
-          })`,
-          transition: "all 0.6s ease-out",
-        }}
+      <header
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-card/80 dark:bg-card/70 backdrop-blur-xl border-b border-border/15 dark:border-white/[0.06] shadow-sm shadow-black/[0.02] dark:shadow-blue-950/20 py-3"
+            : "bg-transparent border-b border-transparent py-5"
+        }`}
       >
-        <div
-          className={`relative transition-all duration-300 ${
-            isScrolled && !isHovered ? "scale-90" : "scale-100"
-          }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div className="bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-full px-6 py-3 shadow-2xl shadow-black/20 hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center space-x-6">
-              {[
-                { href: "#about", text: language === "es" ? "Sobre Mí" : "About Me" },
-                { href: "#projects", text: language === "es" ? "Proyectos" : "Projects" },
-                { href: "#experience", text: language === "es" ? "Experiencia" : "Experience" },
-                { href: "#contact", text: language === "es" ? "Contacto" : "Contact" },
-              ].map((link, i) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-slate-300 hover:text-cyan-400 transition-all duration-200 text-sm font-medium px-3 py-1 rounded-full hover:bg-slate-800/50 hover:scale-110"
-                  style={{
-                    animationDelay: `${0.6 + i * 0.1}s`,
-                    animation: isVisible
-                      ? "fadeInUp 0.5s ease-out forwards"
-                      : "none",
-                  }}
-                >
-                  {link.text}
-                </a>
-              ))}
-              <div className="ml-4 pl-4 border-l border-slate-700/50">
-                <LanguageSwitcher />
-              </div>
+        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+          {/* Brand aligned to content left edge */}
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 text-foreground font-semibold text-sm tracking-tight group"
+          >
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-primary/25 shadow-xs group-hover:scale-110 group-hover:border-primary/60 transition-all duration-300">
+              <img
+                src="/avatar.jpg"
+                alt={name}
+                className="w-full h-full object-cover"
+              />
             </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-foreground text-sm leading-tight">
+                {name}
+              </span>
+              <span className="text-[11px] font-mono text-muted-foreground leading-tight">
+                Full Stack Developer
+              </span>
+            </div>
+          </Link>
+
+          {/* Centered navigation links */}
+          <nav className="flex items-center p-1 rounded-full border border-border/70 bg-card/60 backdrop-blur-md shadow-sm">
+            <Link
+              href={getAnchor("#about")}
+              className="text-xs font-medium px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+            >
+              {language === "es" ? "Sobre mí" : "About"}
+            </Link>
+
+            {/* Interactive Projects Dropdown */}
+            <ProjectsDropdown />
+
+            <Link
+              href={getAnchor("#experience")}
+              className="text-xs font-medium px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+            >
+              {language === "es" ? "Experiencia" : "Experience"}
+            </Link>
+
+            <Link
+              href={getAnchor("#contact")}
+              className="text-xs font-medium px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+            >
+              {language === "es" ? "Contacto" : "Contact"}
+            </Link>
+          </nav>
+
+          {/* Language and Theme controls aligned to content right edge */}
+          <div className="flex items-center gap-2.5">
+            <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
         </div>
-      </nav>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      </header>
     </>
   );
 };

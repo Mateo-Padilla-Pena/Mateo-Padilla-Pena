@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,271 +15,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mateo Padilla Peña - Desarrollador Full Stack | Colombia",
+  title: "Mateo Padilla Peña | Full Stack Developer & Backend Specialist",
   description:
-    "Portfolio de Mateo Padilla Peña, desarrollador Full Stack junior en Colombia. Especializado en JavaScript, Python, Node.js, TypeScript, Vue.js. Experiencia en desarrollo frontend y backend. Disponible para proyectos remotos.",
+    "Portfolio de Mateo Padilla Peña, Desarrollador Full Stack con especialización en arquitecturas backend escalables (NestJS, TypeScript, Python, Vue.js, Firebase, BigQuery). Disponible para proyectos remotos.",
   keywords: [
-    "desarrollador full stack",
-    "desarrollador junior",
-    "desarrollador frontend",
-    "desarrollador backend",
-    "desarrollador Colombia",
-    "programador Colombia",
-    "desarrollador remoto",
-    "full stack developer",
-    "junior developer",
-    "frontend developer",
-    "backend developer",
-    "JavaScript",
-    "Python",
-    "TypeScript",
-    "Vue.js",
+    "Mateo Padilla Peña",
+    "Desarrollador Full Stack",
+    "Backend Developer",
     "NestJS",
-    "Django",
-    "ExpressJS",
-    "Vuetify",
-    "Tailwind CSS",
-    "Bootstrap",
-    "HTML",
-    "CSS",
-    "Google Cloud",
+    "TypeScript",
+    "Python",
+    "Vue.js",
     "Firebase",
-    "Firestore",
     "BigQuery",
-    "SQL",
-    "Realtime Database",
-    "Firebase Storage",
-    "REST APIs",
-    "APIs RESTful",
-    "World App",
-    "Java",
-    "desarrollador Python",
-    "desarrollador JavaScript",
-    "desarrollador TypeScript",
-    "desarrollador Vue.js",
-    "desarrollador NestJS",
-    "desarrollador Django",
-    "desarrollador Firebase",
-    "desarrollador Google Cloud",
-    "desarrollador BigQuery",
-    "desarrollador SQL",
-    "desarrollador APIs",
-    "desarrollador Colombia Medellín",
-    "programador Python Colombia",
-    "programador JavaScript Colombia",
-    "programador Vue.js Colombia",
-    "programador NestJS Colombia",
-    "programador Firebase Colombia",
-    "desarrollador full stack Colombia",
-    "desarrollador backend Colombia",
-    "desarrollador frontend Colombia",
-    "desarrollador remoto Colombia",
-    "programador bilingüe Colombia",
-    "desarrollador inglés español",
-    "programador junior Colombia",
-    "desarrollador junior Medellín",
-    "programador full stack Medellín",
-    "desarrollador web Colombia",
-    "programador web Medellín",
-    "desarrollador aplicaciones web",
-    "programador aplicaciones móviles",
-    "desarrollador plataformas web",
-    "programador sistemas empresariales",
-    "desarrollador soluciones escalables",
-    "programador base de datos",
-    "programador cloud computing",
-    "programador Firebase Colombia",
-    "desarrollador BigQuery Colombia",
-    "programador APIs REST Colombia",
-    "desarrollador TypeScript Colombia",
-    "programador Vue.js Colombia",
-    "desarrollador NestJS Colombia",
-    "programador Python Colombia",
-    "desarrollador Django Colombia",
-    "programador ExpressJS Colombia",
-    "desarrollador Tailwind CSS Colombia",
-    "programador Bootstrap Colombia",
-    "desarrollador Vuetify Colombia",
-    "programador JavaScript Colombia",
-    "desarrollador HTML CSS Colombia",
-    "programador SQL Colombia",
-    "desarrollador Firestore Colombia",
-    "programador Realtime Database Colombia",
-    "desarrollador Firebase Storage Colombia",
-    "programador World App Colombia",
-    "desarrollador Java Colombia",
-    "HackerRank",
-    "Rest API Intermediate",
-    "JavaScript Intermediate",
-    "Problem Solving Basic",
-    "JavaScript Basic",
-    "Python Basic",
-    "Edutin Academy",
-    "OpenBootcamp",
-    "desarrollador certificaciones",
-    "programador certificado",
-    "desarrollador experiencia internacional",
-    "programador Estados Unidos",
-    "desarrollador Argentina",
-    "programador Massachusetts",
-    "desarrollador Buenos Aires",
-    "programador trabajo remoto",
-    "desarrollador proyectos internacionales",
-    "programador empresas extranjeras",
-    "desarrollador soluciones empresariales",
-    "programador gestión empresarial",
-    "desarrollador plataformas veterinarias",
-    "desarrollador quizzes",
-    "programador gestión de ventas",
-    "desarrollador análisis estadísticos",
-    "programador digitalización",
-    "desarrollador sistemas modernos",
-    "programador escalabilidad",
-    "desarrollador calidad de código",
-    "programador mejores prácticas",
-    "desarrollador optimización rendimiento",
-    "programador consultas BigQuery",
-    "desarrollador almacenamiento nube",
-    "programador autenticación usuarios",
-    "desarrollador sistema puntuaciones",
-    "programador gestión pagos",
-    "desarrollador arquitectura base datos",
-    "programador integración APIs",
-    "desarrollador RESTful APIs",
-    "Boston Project LLC",
-    "Eclisse",
-    "programador TypeScript Colombia",
-    "desarrollador JavaScript Colombia",
-    "programador Python Colombia",
-    "desarrollador Vue.js Colombia",
-    "programador NestJS Colombia",
-    "desarrollador Firebase Colombia",
-    "programador Google Cloud Colombia",
-    "desarrollador BigQuery Colombia",
-    "programador SQL Colombia",
-    "desarrollador APIs Colombia",
-    "programador full stack Medellín",
-    "desarrollador backend Medellín",
-    "programador frontend Medellín",
-    "desarrollador remoto Medellín",
-    "programador bilingüe Medellín",
-    "desarrollador junior Medellín",
-    "programador web Medellín",
-    "desarrollador aplicaciones Medellín",
-    "programador plataformas Medellín",
-    "desarrollador sistemas Medellín",
-    "programador soluciones Medellín",
-    "desarrollador cloud Medellín",
-    "programador nube Medellín",
-    "desarrollador base datos Medellín",
-    "programador APIs Medellín",
-    "desarrollador TypeScript Medellín",
-    "programador JavaScript Medellín",
-    "desarrollador Python Medellín",
-    "programador Vue.js Medellín",
-    "desarrollador NestJS Medellín",
-    "programador Firebase Medellín",
-    "desarrollador Google Cloud Medellín",
-    "programador BigQuery Medellín",
-    "desarrollador SQL Medellín",
-    "programador Tailwind CSS Medellín",
-    "desarrollador Bootstrap Medellín",
-    "programador Vuetify Medellín",
-    "desarrollador Django Medellín",
-    "programador ExpressJS Medellín",
-    "desarrollador Java Medellín",
-    "programador certificaciones Medellín",
-    "desarrollador experiencia Medellín",
-    "programador proyectos Medellín",
-    "desarrollador internacional Medellín",
-    "programador remoto Medellín",
-    "desarrollador empresas Medellín",
-    "programador soluciones Medellín",
-    "desarrollador escalable Medellín",
-    "programador calidad Medellín",
-    "desarrollador rendimiento Medellín",
-    "programador optimización Medellín",
-    "desarrollador autenticación Medellín",
-    "programador pagos Medellín",
-    "desarrollador integración Medellín",
-    "programador RESTful Medellín",
-    "desarrollador arquitectura Medellín",
-    "programador base datos Medellín",
-    "desarrollador consultas Medellín",
-    "programador almacenamiento Medellín",
-    "desarrollador nube Medellín",
-    "programador cloud Medellín",
-    "desarrollador puntuaciones Medellín",
-    "programador gestión Medellín",
-    "desarrollador análisis Medellín",
-    "programador estadísticas Medellín",
-    "desarrollador digitalización Medellín",
-    "programador moderno Medellín",
-    "desarrollador prácticas Medellín",
-    "programador mejores Medellín",
-    "desarrollador código Medellín",
-    "programador software Medellín",
-    "desarrollador aplicaciones web Medellín",
-    "programador aplicaciones móviles Medellín",
-    "desarrollador plataformas web Medellín",
-    "programador sistemas empresariales Medellín",
-    "desarrollador soluciones escalables Medellín",
-    "programador arquitectura software Medellín",
-    "desarrollador base datos Medellín",
-    "programador cloud computing Medellín",
-    "desarrollador Google Cloud Platform Medellín",
-    "programador Firebase Medellín",
-    "desarrollador BigQuery Medellín",
-    "programador APIs REST Medellín",
-    "desarrollador TypeScript Medellín",
-    "programador Vue.js Medellín",
-    "desarrollador NestJS Medellín",
-    "programador Python Medellín",
-    "desarrollador Django Medellín",
-    "programador ExpressJS Medellín",
-    "desarrollador Tailwind CSS Medellín",
-    "programador Bootstrap Medellín",
-    "desarrollador Vuetify Medellín",
-    "programador JavaScript Medellín",
-    "desarrollador HTML CSS Medellín",
-    "programador SQL Medellín",
-    "desarrollador Firestore Medellín",
-    "programador Realtime Database Medellín",
-    "desarrollador Firebase Storage Medellín",
-    "programador World App Medellín",
-    "desarrollador Java Medellín",
-    "programador Edutin Academy Medellín",
-    "desarrollador OpenBootcamp Medellín",
-    "desarrollador certificaciones Medellín",
-    "programador certificado Medellín",
-    "desarrollador experiencia internacional Medellín",
-    "programador Estados Unidos Medellín",
-    "desarrollador Argentina Medellín",
-    "programador Massachusetts Medellín",
-    "desarrollador Buenos Aires Medellín",
-    "programador trabajo remoto Medellín",
-    "desarrollador proyectos internacionales Medellín",
-    "programador empresas extranjeras Medellín",
-    "desarrollador soluciones empresariales Medellín",
-    "programador gestión empresarial Medellín",
-    "desarrollador plataformas veterinarias Medellín",
-    "desarrollador quizzes Medellín",
-    "programador gestión de ventas Medellín",
-    "desarrollador análisis estadísticos Medellín",
-    "programador digitalización Medellín",
-    "desarrollador sistemas modernos Medellín",
-    "programador escalabilidad Medellín",
-    "desarrollador calidad de código Medellín",
-    "programador mejores prácticas Medellín",
-    "desarrollador optimización rendimiento Medellín",
-    "programador consultas BigQuery Medellín",
-    "desarrollador almacenamiento nube Medellín",
-    "programador autenticación usuarios Medellín",
-    "desarrollador sistema puntuaciones Medellín",
-    "programador gestión pagos Medellín",
-    "desarrollador arquitectura base datos Medellín",
-    "programador integración APIs Medellín",
-    "desarrollador RESTful APIs Medellín",
+    "Medellín",
+    "Colombia",
+    "Software Engineer",
   ],
   authors: [{ name: "Mateo Padilla Peña" }],
   creator: "Mateo Padilla Peña",
@@ -287,51 +40,12 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://tu-dominio.com"),
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Mateo Padilla Peña - Desarrollador Full Stack | Colombia",
-    description:
-      "Portfolio de Mateo Padilla Peña, desarrollador Full Stack junior en Colombia. Especializado en JavaScript, Python, Node.js, TypeScript, Vue.js. Experiencia en desarrollo frontend y backend. Disponible para proyectos remotos.",
-    url: "https://tu-dominio.com",
-    siteName: "Mateo Padilla Peña Portfolio",
-    locale: "es_CO",
-    type: "website",
-    images: [
-      {
-        url: "/portfolio-image.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Mateo Padilla Peña - Desarrollador Full Stack",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Mateo Padilla Peña - Desarrollador Full Stack | Colombia",
-    description:
-      "Portfolio de Mateo Padilla Peña, desarrollador Full Stack junior en Colombia. Especializado en JavaScript, Python, Node.js, TypeScript, Vue.js. Experiencia en desarrollo frontend y backend. Disponible para proyectos remotos.",
-    images: ["/portfolio-image.jpeg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "tu-google-verification-code",
+  icons: {
+    icon: "/favicon.png?v=5",
+    shortcut: "/favicon.ico?v=5",
+    apple: "/favicon.png?v=5",
   },
 };
-
-import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export default function RootLayout({
   children,
@@ -339,36 +53,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Mateo Padilla Peña" />
-        <meta name="application-name" content="Mateo Padilla Peña Portfolio" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="canonical" href="https://tu-dominio.com" />
-        <meta name="geo.region" content="CO" />
-        <meta name="geo.placename" content="Colombia" />
-        <meta name="language" content="Spanish" />
-        <meta name="distribution" content="global" />
-        <meta name="rating" content="general" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="bingbot" content="index, follow" />
+        <link rel="icon" type="image/png" href="/favicon.png?v=5" />
+        <link rel="shortcut icon" href="/favicon.ico?v=5" />
+        <meta name="color-scheme" content="light dark" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const stored = localStorage.getItem('portfolio-theme');
+                  const isDark = stored === 'dark' || ((!stored || stored === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                  const meta = document.querySelector('meta[name="color-scheme"]');
+                  if (meta) {
+                    meta.content = stored === 'light' || stored === 'dark' ? stored : 'light dark';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary transition-colors duration-200`}
       >
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

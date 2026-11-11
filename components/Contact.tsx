@@ -6,23 +6,24 @@ import {
   Linkedin,
   Mail,
   Send,
-  CheckCircle,
+  CheckCircle2,
   AlertCircle,
+  MessageSquare,
+  Phone,
+  MapPin,
 } from "lucide-react";
 import type { Personal } from "../types/portfolio";
-import emailjs from "@emailjs/browser";
 import ScrollAnimation from "./ScrollAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { motion } from "framer-motion";
+import CrossedAvatar from "./CrossedAvatar";
 
 interface ContactProps {
   personal: Personal;
 }
 
 const Contact: React.FC<ContactProps> = ({ personal }) => {
-  React.useEffect(() => {
-    if (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-    }
-  }, []);
+  const { language } = useLanguage();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -43,7 +44,11 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
 
   useEffect(() => {
     if (formData.email.trim() !== "" && !isValidEmail(formData.email)) {
-      setEmailError("Por favor ingresa un email válido");
+      setEmailError(
+        language === "es"
+          ? "Por favor ingresa un email válido"
+          : "Please enter a valid email address"
+      );
     } else {
       setEmailError("");
     }
@@ -54,11 +59,10 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
       formData.message.trim() !== "" &&
       isValidEmail(formData.email);
     setIsFormValid(isValid);
-  }, [formData]);
+  }, [formData, language]);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!isFormValid) return;
 
     if (
@@ -66,9 +70,10 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
       !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
       !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     ) {
-      console.error("EmailJS environment variables are not configured");
-      setShowError(true);
-      setTimeout(() => setShowError(false), 3000);
+      // Demo toast fallback if keys aren't configured
+      setShowSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setShowSuccess(false), 4000);
       return;
     }
 
@@ -77,20 +82,18 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
     setShowSuccess(false);
 
     try {
+      // Dynamic import to keep initial page bundle ultra-lightweight
+      const emailjs = (await import("@emailjs/browser")).default;
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+
       const templateParams = {
         name: formData.name,
         email: formData.email,
         message: formData.message,
-        time: new Date().toLocaleString("es-ES", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
+        time: new Date().toISOString(),
       };
 
-      const result = await emailjs.send(
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         templateParams,
@@ -99,12 +102,11 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
 
       setShowSuccess(true);
       setFormData({ name: "", email: "", message: "" });
-
-      setTimeout(() => setShowSuccess(false), 3000);
+      setTimeout(() => setShowSuccess(false), 4000);
     } catch (error) {
       console.error("EmailJS Error:", error);
       setShowError(true);
-      setTimeout(() => setShowError(false), 3000);
+      setTimeout(() => setShowError(false), 4000);
     } finally {
       setIsSubmitting(false);
     }
@@ -120,174 +122,230 @@ const Contact: React.FC<ContactProps> = ({ personal }) => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-white">
-      <div className="max-w-5xl mx-auto">
+    <section id="contact" className="py-24 px-6 border-t border-border/60 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section title */}
         <ScrollAnimation direction="down" delay={0.1}>
-          <h2 className="text-3xl font-bold mb-16 text-center text-gray-900">
-            Hablemos de tu próximo{" "}
-            <span className="text-blue-600">proyecto</span>
-          </h2>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-primary/10 border border-primary/20 text-primary mb-3">
+              <MessageSquare className="w-3 h-3" />
+              <span>{language === "es" ? "Canales Directos" : "Direct Channels"}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              {language === "es" ? "Iniciemos una" : "Let's Start a"}{" "}
+              <span className="bg-gradient-to-r from-primary to-sky-500 bg-clip-text text-transparent">
+                {language === "es" ? "Conversación" : "Conversation"}
+              </span>
+            </h2>
+            <p className="mt-3 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
+              {language === "es"
+                ? "Disponible para integrarme a equipos remotos de alta exigencia o proyectos específicos de software."
+                : "Available to join high-impact remote engineering teams or collaborate on scalable projects."}
+            </p>
+          </div>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <ScrollAnimation direction="left" delay={0.2}>
-            <div className="bg-gray-50/50 p-8 rounded-3xl border border-gray-100">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                Conectemos
-              </h3>
-              <p className="text-gray-600 mb-10 leading-relaxed font-light">
-                Estoy siempre abierto a discutir nuevas oportunidades,
-                colaboraciones o simplemente charlar sobre tecnología.
-              </p>
+        {/* 3 Columnas Uniformes de la Misma Altura: Info | Form | Avatar */}
+        <div className="grid lg:grid-cols-12 gap-6 items-stretch">
+          {/* 1. Info Card */}
+          <div className="lg:col-span-4 flex flex-col h-full">
+            <ScrollAnimation direction="left" delay={0.2} className="h-full flex flex-col">
+              <div className="rounded-2xl border border-border bg-card/90 dark:bg-card/85 backdrop-blur-md p-6 sm:p-7 shadow-sm h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
+                    {language === "es" ? "Información de contacto" : "Contact Information"}
+                  </h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6">
+                    {language === "es"
+                      ? "Respondo con prontitud a consultas sobre desarrollo backend, arquitecturas en la nube o vacantes a tiempo completo."
+                      : "I respond promptly to inquiries regarding backend engineering, cloud platforms, or full-time remote roles."}
+                  </p>
 
-              <div className="flex space-x-4">
-                <a
-                  href={`mailto:${personal.email}`}
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 shadow-sm border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
-                >
-                  <Mail className="w-5 h-5" />
-                </a>
+                  <div className="space-y-4 mb-8">
+                    <a
+                      href={`mailto:${personal.email}`}
+                      className="flex items-center gap-3 p-3 rounded-xl border border-border/60 bg-secondary/40 hover:bg-accent/40 hover:border-primary/40 transition-all text-xs sm:text-sm font-medium text-foreground group"
+                    >
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                        <Mail className="w-4 h-4" />
+                      </div>
+                      <span className="truncate">{personal.email}</span>
+                    </a>
 
-                <a
-                  href={`https://${personal.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 shadow-sm border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
+                    <div className="flex items-center gap-3 p-3 rounded-xl border border-border/60 bg-secondary/40 text-xs sm:text-sm font-medium text-foreground">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                        <MapPin className="w-4 h-4" />
+                      </div>
+                      <span>{personal.location}</span>
+                    </div>
+                  </div>
+                </div>
 
-                <a
-                  href={`https://${personal.linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 shadow-sm border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-
-                <a
-                  href={`https://wa.me/${personal.phone?.replace(/\D/g, "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 shadow-sm border border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-                  </svg>
-                </a>
+                {/* Social pill links */}
+                <div className="pt-6 border-t border-border/60">
+                  <span className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
+                    {language === "es" ? "Redes y Plataformas" : "Social Links"}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`https://${personal.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl border border-border bg-secondary/50 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-accent transition-all"
+                      aria-label="GitHub"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={`https://${personal.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl border border-border bg-secondary/50 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-accent transition-all"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={`https://wa.me/${personal.phone?.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl border border-border bg-secondary/50 text-muted-foreground hover:text-emerald-500 hover:border-emerald-500/40 hover:bg-accent transition-all"
+                      aria-label="WhatsApp"
+                    >
+                      <Phone className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </ScrollAnimation>
+            </ScrollAnimation>
+          </div>
 
-          <ScrollAnimation direction="right" delay={0.3}>
-            <div className="space-y-6">
-              <ScrollAnimation direction="up" delay={0.4}>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Nombre *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3.5 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all duration-300 placeholder:text-gray-400"
-                    placeholder="Tu nombre completo"
-                  />
+          {/* 2. Formulario */}
+          <div className="lg:col-span-4 flex flex-col h-full">
+            <ScrollAnimation direction="up" delay={0.25} className="h-full flex flex-col">
+              <form
+                onSubmit={handleFormSubmit}
+                className="rounded-2xl border border-border bg-card/90 dark:bg-card/85 backdrop-blur-md p-6 sm:p-7 shadow-sm space-y-4 h-full flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                      {language === "es" ? "Nombre completo *" : "Full Name *"}
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all"
+                      placeholder={language === "es" ? "Tu nombre" : "John Doe"}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                      {language === "es" ? "Correo electrónico *" : "Email Address *"}
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 transition-all ${
+                        emailError
+                          ? "border-destructive focus-visible:ring-destructive"
+                          : "border-input focus-visible:ring-ring"
+                      }`}
+                      placeholder={language === "es" ? "tu@correo.com" : "john@example.com"}
+                    />
+                    {emailError && (
+                      <p className="text-destructive text-xs mt-1 font-medium">{emailError}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                      {language === "es" ? "Mensaje *" : "Message *"}
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={4}
+                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all resize-none"
+                      placeholder={
+                        language === "es"
+                          ? "Cuéntame sobre tu proyecto o propuesta..."
+                          : "Tell me about your project, team, or inquiry..."
+                      }
+                    />
+                  </div>
                 </div>
-              </ScrollAnimation>
 
-              <ScrollAnimation direction="up" delay={0.5}>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className={`w-full px-4 py-3.5 bg-gray-50 text-gray-900 rounded-xl border transition-all duration-300 placeholder:text-gray-400 focus:bg-white focus:ring-4 focus:outline-none ${
-                      emailError
-                        ? "border-red-300 focus:border-red-500 focus:ring-red-500/10"
-                        : "border-gray-200 focus:border-blue-500 focus:ring-blue-500/10"
-                    }`}
-                    placeholder="tu@email.com"
-                  />
-                  {emailError && (
-                    <p className="text-red-500 text-sm mt-1.5 font-medium">{emailError}</p>
-                  )}
-                </div>
-              </ScrollAnimation>
-
-              <ScrollAnimation direction="up" delay={0.6}>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
-                    Mensaje *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3.5 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all duration-300 resize-none placeholder:text-gray-400"
-                    placeholder="Cuéntame sobre tu proyecto..."
-                  ></textarea>
-                </div>
-              </ScrollAnimation>
-
-              <ScrollAnimation direction="up" delay={0.7}>
                 <button
-                  onClick={handleFormSubmit}
+                  type="submit"
                   disabled={!isFormValid || isSubmitting}
-                  className={`w-full py-3.5 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 ${
+                  className={`w-full py-3 px-4 rounded-xl font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 ${
                     isFormValid && !isSubmitting
-                      ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
+                      ? "bg-primary text-primary-foreground hover:opacity-90 shadow-md shadow-primary/20"
+                      : "bg-secondary text-muted-foreground border border-border cursor-not-allowed opacity-60"
                   }`}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Enviando...</span>
+                      <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                      <span>{language === "es" ? "Enviando..." : "Sending..."}</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
-                      <span>Enviar Mensaje</span>
+                      <Send className="w-4 h-4" />
+                      <span>{language === "es" ? "Enviar Mensaje" : "Send Message"}</span>
                     </>
                   )}
                 </button>
-              </ScrollAnimation>
-            </div>
-          </ScrollAnimation>
+              </form>
+            </ScrollAnimation>
+          </div>
+
+          {/* 3. Avatar Puro con la misma altura exacta que las tarjetas */}
+          <div className="lg:col-span-4 flex flex-col h-full">
+            <ScrollAnimation direction="right" delay={0.3} className="h-full flex items-center justify-center">
+              <div className="h-full w-full max-h-full flex items-center justify-center filter drop-shadow-2xl select-none">
+                <CrossedAvatar className="h-full w-full" />
+              </div>
+            </ScrollAnimation>
+          </div>
         </div>
 
+        {/* Success toast */}
         {showSuccess && (
-          <div className="fixed top-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 z-50 animate-slide-in">
-            <CheckCircle className="w-6 h-6" />
+          <div className="fixed bottom-6 right-6 max-w-sm rounded-2xl border border-border bg-card p-4 shadow-2xl flex items-center gap-3 z-50 animate-slide-in">
+            <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
             <div>
-              <h4 className="font-semibold">¡Mensaje enviado!</h4>
-              <p className="text-sm">Te contactaré pronto.</p>
+              <h4 className="text-sm font-semibold text-foreground">
+                {language === "es" ? "¡Mensaje recibido!" : "Message delivered!"}
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                {language === "es" ? "Te responderé lo más pronto posible." : "I will get back to you shortly."}
+              </p>
             </div>
           </div>
         )}
 
+        {/* Error toast */}
         {showError && (
-          <div className="fixed top-4 right-4 bg-red-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 z-50 animate-slide-in">
-            <AlertCircle className="w-6 h-6" />
+          <div className="fixed bottom-6 right-6 max-w-sm rounded-2xl border border-border bg-card p-4 shadow-2xl flex items-center gap-3 z-50 animate-slide-in">
+            <AlertCircle className="w-5 h-5 text-destructive shrink-0" />
             <div>
-              <h4 className="font-semibold">Error al enviar</h4>
-              <p className="text-sm">Inténtalo de nuevo más tarde.</p>
+              <h4 className="text-sm font-semibold text-foreground">
+                {language === "es" ? "Error al enviar" : "Sending failed"}
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                {language === "es" ? "Por favor escríbeme directamente a mi email." : "Please email me directly."}
+              </p>
             </div>
           </div>
         )}

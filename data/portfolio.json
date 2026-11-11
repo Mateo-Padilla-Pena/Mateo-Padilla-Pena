@@ -1,219 +1,334 @@
 {
-  "personal": {
-    "name": "Mateo Padilla Peña",
-    "role": "Desarrollador FullStack",
-    "bio": "Desarrollador Full Stack con más de un año de experiencia especializado en JavaScript y Python, con enfoque principal en desarrollo backend. He participado en proyectos internacionales trabajando de forma remota para empresas en Estados Unidos y Argentina, desarrollando soluciones escalables utilizando tecnologías como NestJS, Vue.js, Firebase y BigQuery.",
-    "email": "mateopadilla707@gmail.com",
-    "location": "Medellín, Colombia",
-    "phone": "+57 3216187473",
-    "linkedin": "linkedin.com/in/mateo-padilla-peña",
-    "github": "github.com/Mateo-Padilla-Pena"
-  },
-
-  "about": {
-    "story": "Mi experiencia incluye el desarrollo de plataformas web complejas y aplicaciones móviles, siempre priorizando la calidad del código, la escalabilidad y la alineación con objetivos empresariales. Me especializo en crear soluciones robustas y eficientes que resuelvan problemas reales del mundo empresarial.",
-    "skills": {
-      "backend": [
-        {
-          "name": "JavaScript",
-          "logo": "javascript"
-        },
-        {
-          "name": "Python",
-          "logo": "python"
-        },
-        {
-          "name": "NestJS",
-          "logo": "nestjs"
-        },
-        {
-          "name": "Django",
-          "logo": "django"
-        },
-        {
-          "name": "ExpressJS",
-          "logo": "expressjs"
-        }
-      ],
-      "frontend": [
-        {
-          "name": "Vue.js",
-          "logo": "vuejs"
-        },
-        {
-          "name": "Vuetify",
-          "logo": "vuetify"
-        },
-        {
-          "name": "HTML/CSS",
-          "logo": "html5"
-        },
-        {
-          "name": "Tailwind CSS",
-          "logo": "tailwindcss"
-        },
-        {
-          "name": "Bootstrap",
-          "logo": "bootstrap"
-        }
-      ],
-      "services": [
-        {
-          "name": "Google Cloud",
-          "logo": "googlecloud"
-        },
-        {
-          "name": "Firebase",
-          "logo": "firebase"
-        },
-        {
-          "name": "Firestore",
-          "logo": "firestore"
-        },
-        {
-          "name": "BigQuery",
-          "logo": "bigquery"
-        },
-        {
-          "name": "SQL",
-          "logo": "sql"
-        }
-      ]
-    }
-  },
-
-  "projects": [
-    {
-      "id": 1,
-      "title": "Horus",
-      "description": "Desarrollé una plataforma integral de gestión veterinaria que permite a los profesionales administrar pacientes, clientes, citas e inventario de productos de manera eficiente. La solución digitaliza las operaciones clínicas veterinarias, reemplazando métodos tradicionales por un sistema moderno y organizado. Desarrollada con NestJS, ReactJS y Tailwind CSS.",
-      "tech": ["NestJS", "ReactJS", "TypeScript", "Tailwind CSS", "REST APIs"],
-      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-      "demo": "#",
-      "code": "#",
-      "impact": "Digitalización de clínicas veterinarias"
+  "es": {
+    "personal": {
+      "name": "Mateo Padilla Peña",
+      "role": "Full Stack Developer",
+      "bio": "Desarrollador Full Stack con más de 2 años de experiencia profesional (iniciando en 2024) creando aplicaciones web completas, escalables y de alto rendimiento. Con trayectoria en proyectos internacionales remotos para empresas en Estados Unidos y Argentina, dominando tanto el desarrollo frontend reactivo como arquitecturas backend robustas con NestJS, TypeScript, Python, Vue.js, Firebase y BigQuery.",
+      "email": "mateopadilla707@gmail.com",
+      "location": "Medellín, Colombia",
+      "phone": "+57 321 618 7473",
+      "linkedin": "linkedin.com/in/mateo-padilla-peña",
+      "github": "github.com/Mateo-Padilla-Pena",
+      "available": true
     },
-    {
-      "id": 2,
-      "title": "App de Quizzes Criptomonedas",
-      "description": "Desarrollé el backend de una aplicación móvil de quizzes sobre criptomonedas utilizando NestJS y TypeScript. Implementé la integración con World App mediante APIs RESTful.",
-      "tech": ["NestJS", "TypeScript", "APIs RESTful", "World App"],
-      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-      "demo": "#",
-      "code": "#",
-      "impact": "Sistema de autenticación, pagos y puntuaciones"
+    "about": {
+      "story": "Como Full Stack Developer, combino una sólida visión de arquitectura backend con la creación de interfaces de usuario modernas, intuitivas y fluidas. Mi experiencia incluye desde el diseño de microservicios y APIs RESTful de baja latencia hasta la construcción de componentes web modulares, integración de protocolos de identidad digital y motores analíticos en la nube.",
+      "skills": {
+        "backend": [
+          { "name": "TypeScript", "logo": "javascript" },
+          { "name": "NestJS", "logo": "nestjs" },
+          { "name": "Python", "logo": "python" },
+          { "name": "Express.js", "logo": "expressjs" },
+          { "name": "Django", "logo": "django" }
+        ],
+        "frontend": [
+          { "name": "Vue.js", "logo": "vuejs" },
+          { "name": "Tailwind CSS", "logo": "tailwindcss" },
+          { "name": "Vuetify", "logo": "vuetify" },
+          { "name": "HTML5 / Modern CSS", "logo": "html5" },
+          { "name": "JavaScript (ESNext)", "logo": "javascript" }
+        ],
+        "services": [
+          { "name": "Google Cloud", "logo": "googlecloud" },
+          { "name": "Cloud Firestore", "logo": "firestore" },
+          { "name": "Firebase Auth & Storage", "logo": "firebase" },
+          { "name": "BigQuery Analytics", "logo": "bigquery" },
+          { "name": "SQL & Relational DBs", "logo": "sql" }
+        ]
+      }
     },
-    {
-      "id": 3,
-      "title": "My Sales",
-      "description": "Desarrollé una plataforma de gestión empresarial para pequeñas empresas, incluyendo gestión de categorías, productos, ventas y análisis estadísticos. La solución permite a las empresas digitalizar sus operaciones comerciales, reemplazando métodos tradicionales como notas en celular por un sistema profesional y escalable. Desarrollada con NestJS, Vue.js y Vuetify.",
-      "tech": ["NestJS", "Vue.js", "Vuetify", "TypeScript", "REST APIs"],
-      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
-      "demo": "#",
-      "code": "#",
-      "impact": "Digitalización de operaciones comerciales"
-    }
-  ],
-
-  "experience": [
-    {
-      "company": "Boston Project LLC",
-      "position": "Desarrollador FullStack",
-      "period": "09/2024 – Actualidad",
-      "location": "Massachusetts, Estados Unidos",
-      "description": "Desarrollo y mantenimiento de la plataforma principal de la empresa utilizando Vue.js, Vuetify y JavaScript en el frontend, integrada con Firebase Storage, Firestore y BigQuery para el backend. Implemento nuevas funcionalidades siguiendo mejores prácticas de desarrollo, optimizando el rendimiento de consultas en BigQuery y gestionando el almacenamiento de datos en la nube.",
-      "achievements": [
-        "Desarrollo de plataforma principal",
-        "Optimización de consultas BigQuery",
-        "Gestión de almacenamiento en la nube",
-        "Implementación de mejores prácticas"
-      ]
-    },
-    {
-      "company": "Eclisse",
-      "position": "Desarrollador Backend",
-      "period": "02/2025 – 05/2025",
-      "location": "Buenos Aires, Argentina",
-      "description": "Desarrollé el backend de una aplicación móvil de quizzes sobre criptomonedas utilizando NestJS y TypeScript. Implementé la integración con World App mediante APIs RESTful, gestionando la autenticación de usuarios y el sistema de puntuaciones.",
-      "achievements": [
-        "Desarrollo backend con NestJS",
-        "Integración con World App",
-        "Sistema de autenticación",
-        "Arquitectura de base de datos",
-        "Gestion de pagos con world app"
-      ]
-    }
-  ],
-
-  "skills": {
-    "backend": ["Python", "Django", "JavaScript", "ExpressJS", "NestJS"],
-    "frontend": [
-      "HTML",
-      "CSS",
-      "VueJS",
-      "Vuetify",
-      "Bootstrap",
-      "Tailwind CSS",
-      "JavaScript"
+    "projects": [
+      {
+        "id": 1,
+        "title": "Horus - Sistema de Gestión Veterinaria",
+        "sector": "Salud & Veterinaria",
+        "description": "Plataforma Full Stack SaaS integral de gestión clínica y operativa para centros veterinarios. Diseñada para centralizar historias clínicas de pacientes, agenda de citas en tiempo real, facturación e inventario farmacéutico automatizado.",
+        "tech": ["NestJS", "React", "TypeScript", "Tailwind CSS", "REST APIs", "PostgreSQL"],
+        "image": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Digitalización 100% de expedientes y reducción del 40% en tiempos de consulta clínica"
+      },
+      {
+        "id": 2,
+        "title": "Crypto Trivia & Rewards Mobile Backend",
+        "sector": "Web3 & Fintech",
+        "description": "Arquitectura de backend escalable para una aplicación móvil interactiva de preguntas sobre tecnología blockchain. Integra autenticación biométrica descentralizada con World App, procesamiento de micropagos y motor de puntuación en tiempo real.",
+        "tech": ["NestJS", "TypeScript", "World App SDK", "REST APIs", "PostgreSQL", "Redis"],
+        "image": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Motor de autenticación biométrica y distribución instantánea de recompensas para miles de usuarios"
+      },
+      {
+        "id": 3,
+        "title": "My Sales - Suite Comercial y Punto de Venta",
+        "sector": "Comercio & Retail",
+        "description": "Solución empresarial moderna para micro y medianas empresas. Centraliza la administración de catálogo, control de existencias en múltiples bodegas, analítica predictiva de ventas y reportes contables automatizados.",
+        "tech": ["NestJS", "Vue.js 3", "Vuetify", "TypeScript", "REST APIs", "Cloud SQL"],
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Automatización comercial integral reemplazando registros manuales en papel y hojas de cálculo"
+      },
+      {
+        "id": 4,
+        "title": "ProServe - Plataforma de Agendamiento de Citas",
+        "sector": "Productividad & SaaS",
+        "description": "Plataforma SaaS integral de agendamiento online y gestión de citas para profesionales independientes (barberías, estilistas, terapeutas y centros de estética). Cuenta con calendario inteligente en tiempo real, link público de reservas 24/7, recordatorios automatizados y control de clientes e ingresos.",
+        "tech": ["React", "NestJS", "PostgreSQL", "Firebase Auth", "Railway", "Google Cloud"],
+        "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&h=420&fit=crop",
+        "demo": "https://pro-serve-app.com/",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Automatización total de reservas y recordatorios, reduciendo drásticamente ausencias de clientes y optimizando la agenda diaria"
+      },
+      {
+        "id": 5,
+        "title": "Campaigns Manager - Automatización y Mensajería por WhatsApp",
+        "sector": "Marketing & Automatización",
+        "description": "Plataforma empresarial de comunicaciones masivas y confirmación de citas integrada con la API oficial de Meta Business (WhatsApp Cloud API). Diseñada con arquitectura serverless de alta concurrencia para envíos programados, flujos interactivos dinámicos y analítica de entrega.",
+        "tech": ["Vue.js 3", "Vuetify 3", "AWS Lambda", "DynamoDB", "Meta Business API", "Node.js"],
+        "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=700&h=420&fit=crop",
+        "demo": "https://www.campaignsmanager.co/",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Procesamiento serverless de miles de notificaciones automáticas con 95% de tasa de apertura y reducción de costos operativos"
+      }
     ],
-    "database": ["SQL", "Firestore", "Realtime Database", "BigQuery"],
-    "cloud": ["Firebase", "Firebase Storage", "Google Cloud"]
+    "experience": [
+      {
+        "company": "Boston Project LLC",
+        "position": "Full Stack Developer",
+        "period": "09/2024 – Actualidad",
+        "location": "Massachusetts, Estados Unidos (Remoto)",
+        "description": "Lidero el desarrollo y mantenimiento evolutivo de la plataforma central corporativa. Desarrollo módulos clave en frontend (Vue.js, Vuetify) y diseño la arquitectura backend con Firebase Firestore, Storage y BigQuery.",
+        "achievements": [
+          "Optimización de consultas analíticas complejas en BigQuery, reduciendo costos y tiempos de respuesta en un 35%",
+          "Implementación de arquitectura basada en componentes reactivos y tipado estricto con TypeScript",
+          "Gestión y estructuración segura de grandes volúmenes de datos en Firebase Cloud Storage",
+          "Adopción de estándares de calidad de código, revisión por pares y despliegue continuo"
+        ]
+      },
+      {
+        "company": "Eclisse",
+        "position": "Backend Developer",
+        "period": "02/2025 – 05/2025",
+        "location": "Buenos Aires, Argentina (Remoto)",
+        "description": "Diseñé e implementé la arquitectura backend orientada a microservicios para la app móvil de trivia cripto. Responsable del flujo de autenticación, validación de transacciones y cálculo de puntajes.",
+        "achievements": [
+          "Diseño de APIs RESTful de baja latencia con NestJS y TypeScript para alta concurrencia",
+          "Integración de validación de identidad y pagos con el protocolo World App",
+          "Modelado de base de datos relacional optimizada para tablas de clasificación en vivo",
+          "Aseguramiento de consistencia transaccional en la liquidación de recompensas"
+        ]
+      }
+    ],
+    "skills": {
+      "backend": ["TypeScript", "JavaScript", "Python", "NestJS", "Express.js", "Django", "Node.js", "AWS Lambda"],
+      "frontend": ["Vue.js", "React", "Vuetify", "Tailwind CSS", "Bootstrap", "HTML5 / Modern CSS"],
+      "database": ["PostgreSQL", "Cloud Firestore", "DynamoDB", "BigQuery", "Firebase Realtime DB", "SQL"],
+      "cloud": ["Google Cloud Platform", "AWS Lambda", "Firebase Services", "Railway", "Cloud Functions", "Docker", "Git / GitHub"]
+    },
+    "certifications": [
+      "Rest API Intermediate (HackerRank)",
+      "JavaScript Intermediate (HackerRank)",
+      "Problem Solving Basic (HackerRank)",
+      "JavaScript Basic (HackerRank)",
+      "Python Basic (HackerRank)"
+    ],
+    "courses": [
+      { "name": "Java Architecture & Programming", "institution": "Edutin Academy" },
+      { "name": "Python Advanced Applications", "institution": "Edutin Academy" },
+      { "name": "Django Enterprise Web Framework", "institution": "OpenBootcamp" }
+    ],
+    "languages": [
+      { "name": "Español", "level": "Nativo", "percentage": 100 },
+      { "name": "Inglés", "level": "B2 - Intermedio Avanzado (Profesional)", "percentage": 75 }
+    ],
+    "references": [
+      {
+        "name": "Sebastian Padilla",
+        "position": "Comerciante, Korintio",
+        "email": "sebastianpadilladuque@gmail.com",
+        "phone": "+57 320 6663177"
+      },
+      {
+        "name": "Sebastian Rua",
+        "position": "Ingeniero de Datos, Bancolombia",
+        "email": "ruasebas@gmail.com",
+        "phone": "+57 3162953650"
+      },
+      {
+        "name": "Julian Peña",
+        "position": "Docente cátedra de programación, Universidad Pascual Bravo",
+        "email": "julian.pena@pascualbravo.edu.co",
+        "phone": "+57 302 6005450"
+      }
+    ]
   },
-
-  "certifications": [
-    "Rest API Intermediate (HackerRank)",
-    "JavaScript Intermediate (HackerRank)",
-    "Problem Solving Basic (HackerRank)",
-    "JavaScript Basic (HackerRank)",
-    "Python Basic (HackerRank)"
-  ],
-
-  "courses": [
-    {
-      "name": "Java",
-      "institution": "Edutin Academy"
+  "en": {
+    "personal": {
+      "name": "Mateo Padilla Peña",
+      "role": "Full Stack Developer",
+      "bio": "Full Stack Developer with over 2 years of professional software engineering experience (starting in 2024), building end-to-end scalable, high-performance web applications. Experienced working remotely for international engineering teams across the US and Argentina, mastering responsive frontend engineering as well as resilient backend architectures using NestJS, TypeScript, Python, Vue.js, Firebase, and BigQuery.",
+      "email": "mateopadilla707@gmail.com",
+      "location": "Medellín, Colombia",
+      "phone": "+57 321 618 7473",
+      "linkedin": "linkedin.com/in/mateo-padilla-peña",
+      "github": "github.com/Mateo-Padilla-Pena",
+      "available": true
     },
-    {
-      "name": "Python",
-      "institution": "Edutin Academy"
+    "about": {
+      "story": "As a Full Stack Developer, I unite rigorous backend software architecture with the craftsmanship of modern, responsive, and intuitive user interfaces. My journey covers everything from sub-second latency RESTful APIs and distributed microservices to reactive UI components, digital identity protocols, and cloud analytics.",
+      "skills": {
+        "backend": [
+          { "name": "TypeScript", "logo": "javascript" },
+          { "name": "NestJS", "logo": "nestjs" },
+          { "name": "Python", "logo": "python" },
+          { "name": "Express.js", "logo": "expressjs" },
+          { "name": "Django", "logo": "django" }
+        ],
+        "frontend": [
+          { "name": "Vue.js", "logo": "vuejs" },
+          { "name": "Tailwind CSS", "logo": "tailwindcss" },
+          { "name": "Vuetify", "logo": "vuetify" },
+          { "name": "HTML5 / Modern CSS", "logo": "html5" },
+          { "name": "JavaScript (ESNext)", "logo": "javascript" }
+        ],
+        "services": [
+          { "name": "Google Cloud", "logo": "googlecloud" },
+          { "name": "Cloud Firestore", "logo": "firestore" },
+          { "name": "Firebase Auth & Storage", "logo": "firebase" },
+          { "name": "BigQuery Analytics", "logo": "bigquery" },
+          { "name": "SQL & Relational DBs", "logo": "sql" }
+        ]
+      }
     },
-    {
-      "name": "Django",
-      "institution": "OpenBootcamp"
-    }
-  ],
-
-  "languages": [
-    {
-      "name": "Español",
-      "level": "Nativo",
-      "percentage": 100
+    "projects": [
+      {
+        "id": 1,
+        "title": "Horus - Veterinary Practice Management System",
+        "sector": "Healthcare & Veterinary",
+        "description": "Comprehensive SaaS clinic operations platform designed for veterinary practices. Seamlessly orchestrates electronic health records, real-time appointment scheduling, billing, and automated pharmaceutical inventory.",
+        "tech": ["NestJS", "React", "TypeScript", "Tailwind CSS", "REST APIs", "PostgreSQL"],
+        "image": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "100% digitization of clinical records and 40% reduction in patient consultation waiting time"
+      },
+      {
+        "id": 2,
+        "title": "Crypto Trivia & Rewards Mobile Backend",
+        "sector": "Web3 & Fintech",
+        "description": "High-throughput backend architecture powering an interactive mobile blockchain quiz application. Integrated biometric decentralized identity via World App, cryptographic payment settlement, and real-time score ranking.",
+        "tech": ["NestJS", "TypeScript", "World App SDK", "REST APIs", "PostgreSQL", "Redis"],
+        "image": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Biometric authentication and instant micro-reward distribution for thousands of active users"
+      },
+      {
+        "id": 3,
+        "title": "My Sales - Commercial Suite & Point of Sale",
+        "sector": "Commerce & Retail",
+        "description": "Modern enterprise management platform tailored for growing businesses. Unifies catalog administration, multi-warehouse inventory monitoring, predictive sales telemetry, and automated fiscal reporting.",
+        "tech": ["NestJS", "Vue.js 3", "Vuetify", "TypeScript", "REST APIs", "Cloud SQL"],
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=420&fit=crop",
+        "demo": "#",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "End-to-end commercial automation replacing fragmented paper trails and manual spreadsheets"
+      },
+      {
+        "id": 4,
+        "title": "ProServe - Appointment Scheduling & Practice Platform",
+        "sector": "Productivity & SaaS",
+        "description": "All-in-one SaaS appointment scheduling and client management platform for independent professionals (barbers, stylists, therapists, and aesthetic clinics). Features real-time smart calendaring, 24/7 public booking links, automated client reminders, and revenue tracking.",
+        "tech": ["React", "NestJS", "PostgreSQL", "Firebase Auth", "Railway", "Google Cloud"],
+        "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&h=420&fit=crop",
+        "demo": "https://pro-serve-app.com/",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "End-to-end booking automation and smart reminders, eliminating client no-shows and maximizing schedule occupancy"
+      },
+      {
+        "id": 5,
+        "title": "Campaigns Manager - WhatsApp Communications & Automation Platform",
+        "sector": "Marketing & Automation",
+        "description": "Enterprise communications platform for automated mass broadcasting and appointment confirmations powered by the official Meta Business API (WhatsApp Cloud API). Built on an event-driven serverless architecture for high-volume delivery, dynamic conversation flows, and real-time delivery telemetry.",
+        "tech": ["Vue.js 3", "Vuetify 3", "AWS Lambda", "DynamoDB", "Meta Business API", "Node.js"],
+        "image": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=700&h=420&fit=crop",
+        "demo": "https://www.campaignsmanager.co/",
+        "code": "https://github.com/Mateo-Padilla-Pena",
+        "impact": "Serverless handling of thousands of instant notifications and confirmations, driving 95% open rates while slashing manual communication overhead"
+      }
+    ],
+    "experience": [
+      {
+        "company": "Boston Project LLC",
+        "position": "Full Stack Developer",
+        "period": "09/2024 – Present",
+        "location": "Massachusetts, United States (Remote)",
+        "description": "Leading full-stack engineering and iterative enhancements for the company's core platform. Developing scalable frontend interfaces in Vue.js/Vuetify and designing backend infrastructure with Firebase Firestore, Cloud Storage, and BigQuery.",
+        "achievements": [
+          "Optimized analytical BigQuery query execution, slashing latency and infrastructure costs by 35%",
+          "Architected reactive UI components with strict TypeScript typing and state normalization",
+          "Orchestrated cloud storage pipelines managing high volumes of unstructured data reliably",
+          "Established automated CI workflows, linting policies, and code review standards"
+        ]
+      },
+      {
+        "company": "Eclisse",
+        "position": "Backend Developer",
+        "period": "02/2025 – 05/2025",
+        "location": "Buenos Aires, Argentina (Remote)",
+        "description": "Engineered the microservices backend infrastructure for a blockchain trivia mobile app. Spearheaded user authentication, fraud verification, and real-time leaderboard algorithms.",
+        "achievements": [
+          "Designed sub-second latency RESTful APIs in NestJS/TypeScript handling high peak concurrency",
+          "Integrated World App identity verification and programmatic payout disbursement",
+          "Modeled relational database schemas optimized for live scoring tables and transaction auditing",
+          "Guaranteed transactional consistency across concurrent reward distribution cycles"
+        ]
+      }
+    ],
+    "skills": {
+      "backend": ["TypeScript", "JavaScript", "Python", "NestJS", "Express.js", "Django", "Node.js", "AWS Lambda"],
+      "frontend": ["Vue.js", "React", "Vuetify", "Tailwind CSS", "Bootstrap", "HTML5 / Modern CSS"],
+      "database": ["PostgreSQL", "Cloud Firestore", "DynamoDB", "BigQuery", "Firebase Realtime DB", "SQL"],
+      "cloud": ["Google Cloud Platform", "AWS Lambda", "Firebase Services", "Railway", "Cloud Functions", "Docker", "Git / GitHub"]
     },
-    {
-      "name": "Inglés",
-      "level": "B2",
-      "percentage": 75
-    }
-  ],
-
-  "references": [
-    {
-      "name": "Sebastian Padilla",
-      "position": "Comerciante, Korintio",
-      "email": "sebastianpadilladuque@gmail.com",
-      "phone": "+57 320 6663177"
-    },
-    {
-      "name": "Sebastian Rua",
-      "position": "Ingeniero de Datos, Bancolombia",
-      "email": "ruasebas@gmail.com",
-      "phone": "+57 3162953650"
-    },
-    {
-      "name": "Julian Peña",
-      "position": "Docente cátedra de programación, Universidad Pascual Bravo",
-      "email": "julian.pena@pascualbravo.edu.co",
-      "phone": "+57 302 6005450"
-    }
-  ]
+    "certifications": [
+      "Rest API Intermediate (HackerRank)",
+      "JavaScript Intermediate (HackerRank)",
+      "Problem Solving Basic (HackerRank)",
+      "JavaScript Basic (HackerRank)",
+      "Python Basic (HackerRank)"
+    ],
+    "courses": [
+      { "name": "Java Architecture & Programming", "institution": "Edutin Academy" },
+      { "name": "Python Advanced Applications", "institution": "Edutin Academy" },
+      { "name": "Django Enterprise Web Framework", "institution": "OpenBootcamp" }
+    ],
+    "languages": [
+      { "name": "Spanish", "level": "Native", "percentage": 100 },
+      { "name": "English", "level": "B2 - Upper Intermediate (Professional Working Proficiency)", "percentage": 75 }
+    ],
+    "references": [
+      {
+        "name": "Sebastian Padilla",
+        "position": "Merchant & Business Owner, Korintio",
+        "email": "sebastianpadilladuque@gmail.com",
+        "phone": "+57 320 6663177"
+      },
+      {
+        "name": "Sebastian Rua",
+        "position": "Data Engineer, Bancolombia",
+        "email": "ruasebas@gmail.com",
+        "phone": "+57 3162953650"
+      },
+      {
+        "name": "Julian Peña",
+        "position": "Programming Professor, Pascual Bravo University",
+        "email": "julian.pena@pascualbravo.edu.co",
+        "phone": "+57 302 6005450"
+      }
+    ]
+  }
 }

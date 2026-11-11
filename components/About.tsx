@@ -1,9 +1,12 @@
 "use client";
 
 import React from "react";
+import { Server, Layout, Cloud, Terminal, Cpu } from "lucide-react";
 import type { About as AboutType } from "../types/portfolio";
 import TechLogo from "./TechLogo";
 import ScrollAnimation from "./ScrollAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import CrossedAvatar from "./CrossedAvatar";
 
 interface AboutProps {
   story: string;
@@ -11,120 +14,131 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ story, skills }) => {
-  return (
-    <section id="about" className="py-24 px-6 bg-gray-50/50 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto">
-        <ScrollAnimation direction="down" delay={0.1}>
-          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">
-            Sobre <span className="text-blue-600">Mí</span>
-          </h2>
-        </ScrollAnimation>
+  const { language } = useLanguage();
 
-        <ScrollAnimation direction="up" delay={0.2}>
-          <div className="mb-20">
-            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto text-center font-light">
-              {story}
-            </p>
+  const categories = [
+    {
+      title: "Backend & APIs",
+      icon: <Server className="w-4 h-4 text-primary" />,
+      items: skills.backend,
+      tag: "Core Focus",
+    },
+    {
+      title: "Frontend & UI",
+      icon: <Layout className="w-4 h-4 text-sky-500" />,
+      items: skills.frontend,
+      tag: "Modern Web",
+    },
+    {
+      title: "Cloud & Services",
+      icon: <Cloud className="w-4 h-4 text-blue-500" />,
+      items: skills.services,
+      tag: "Infrastructure",
+    },
+  ];
+
+  return (
+    <section id="about" className="py-24 px-6 border-t border-border/60 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section title */}
+        <ScrollAnimation direction="down" delay={0.1}>
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-primary/10 border border-primary/20 text-primary mb-3">
+              <Terminal className="w-3 h-3" />
+              <span>{language === "es" ? "Perfil & Especialidad" : "Profile & Tech Stack"}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              {language === "es" ? "Sobre" : "About"}{" "}
+              <span className="bg-gradient-to-r from-primary to-sky-500 bg-clip-text text-transparent">
+                {language === "es" ? "Mí" : "Me"}
+              </span>
+            </h2>
           </div>
         </ScrollAnimation>
 
-        <ScrollAnimation direction="up" delay={0.3}>
-          <div>
-            <h3 className="text-2xl font-bold mb-10 text-center text-gray-900">
-              Stack <span className="text-blue-600">Tecnológico</span>
-            </h3>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <ScrollAnimation direction="left" delay={0.4}>
-                <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                  <h4 className="text-lg font-semibold mb-6 text-gray-900 flex items-center justify-start">
-                    <span className="text-xl mr-3">⚙️</span>
-                    Backend
-                  </h4>
-                  <div className="space-y-3">
-                    {skills.backend.map((skill, index) => (
-                      <ScrollAnimation
-                        key={index}
-                        direction="left"
-                        delay={0.5 + index * 0.03}
-                        duration={0.3}
-                      >
-                        <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
-                          <TechLogo
-                            logo={skill.logo}
-                            name={skill.name}
-                            className="w-6 h-6 grayscale hover:grayscale-0 transition-all"
-                          />
-                          <span className="text-sm font-medium text-gray-700">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </ScrollAnimation>
-                    ))}
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              <ScrollAnimation direction="up" delay={0.4}>
-                <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                  <h4 className="text-lg font-semibold mb-6 text-gray-900 flex items-center justify-start">
-                    <span className="text-xl mr-3">🎨</span>
-                    Frontend
-                  </h4>
-                  <div className="space-y-3">
-                    {skills.frontend.map((skill, index) => (
-                      <ScrollAnimation
-                        key={index}
-                        direction="up"
-                        delay={0.5 + index * 0.03}
-                        duration={0.3}
-                      >
-                        <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
-                          <TechLogo
-                            logo={skill.logo}
-                            name={skill.name}
-                            className="w-6 h-6 grayscale hover:grayscale-0 transition-all"
-                          />
-                          <span className="text-sm font-medium text-gray-700">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </ScrollAnimation>
-                    ))}
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              <ScrollAnimation direction="right" delay={0.4}>
-                <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                  <h4 className="text-lg font-semibold mb-6 text-gray-900 flex items-center justify-start">
-                    <span className="text-xl mr-3">☁️</span>
-                    Servicios & Cloud
-                  </h4>
-                  <div className="space-y-3">
-                    {skills.services.map((skill, index) => (
-                      <ScrollAnimation
-                        key={index}
-                        direction="right"
-                        delay={0.5 + index * 0.02}
-                        duration={0.25}
-                      >
-                        <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
-                          <TechLogo
-                            logo={skill.logo}
-                            name={skill.name}
-                            className="w-6 h-6 grayscale hover:grayscale-0 transition-all"
-                          />
-                          <span className="text-sm font-medium text-gray-700">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </ScrollAnimation>
-                    ))}
-                  </div>
-                </div>
-              </ScrollAnimation>
+        {/* Narrative story card con Avatar al lado */}
+        <ScrollAnimation direction="up" delay={0.2}>
+          <div className="max-w-4xl mx-auto mb-16 grid md:grid-cols-12 gap-8 items-center">
+            {/* Story Card */}
+            <div className="md:col-span-8 rounded-2xl border border-border bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm relative overflow-hidden h-full flex items-center">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed font-normal">
+                {story}
+              </p>
             </div>
+
+            {/* Avatar interactivo al lado de Sobre Mí */}
+            <div className="md:col-span-4 flex items-center justify-center">
+              <div className="w-52 sm:w-60 md:w-full max-w-[260px] aspect-square flex items-center justify-center filter drop-shadow-2xl select-none">
+                <CrossedAvatar className="w-full h-full" />
+              </div>
+            </div>
+          </div>
+        </ScrollAnimation>
+
+        {/* Tech Stack Cards */}
+        <ScrollAnimation direction="up" delay={0.3}>
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-primary" />
+              <h3 className="text-xl font-bold tracking-tight text-foreground">
+                {language === "es" ? "Stack Tecnológico" : "Technology Stack"}
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground hidden sm:inline-block">
+              {language === "es" ? "Herramientas de producción" : "Production toolchain"}
+            </span>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {categories.map((category, catIndex) => (
+              <ScrollAnimation
+                key={category.title}
+                direction="up"
+                delay={0.35 + catIndex * 0.1}
+              >
+                <div className="h-full rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-6 shadow-sm hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col">
+                  {/* Category header */}
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/60">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2 rounded-lg bg-secondary border border-border/80">
+                        {category.icon}
+                      </div>
+                      <h4 className="font-semibold text-foreground text-sm tracking-tight">
+                        {category.title}
+                      </h4>
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-secondary text-muted-foreground border border-border/60">
+                      {category.tag}
+                    </span>
+                  </div>
+
+                  {/* Skills list */}
+                  <div className="space-y-2 flex-grow">
+                    {category.items.map((skill, index) => (
+                      <div
+                        key={index}
+                        className="group flex items-center justify-between p-2.5 rounded-xl bg-secondary/50 border border-border/50 hover:bg-accent/40 hover:border-primary/30 transition-all duration-200"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <TechLogo
+                            logo={skill.logo || "code"}
+                            name={skill.name}
+                            className="w-5 h-5 transition-transform group-hover:scale-110"
+                          />
+                          <span className="text-xs sm:text-sm font-medium text-foreground">
+                            {skill.name}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                          active
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
           </div>
         </ScrollAnimation>
       </div>

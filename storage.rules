@@ -1,0 +1,40 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // 1. Projects images: projects/{projectId}/images/*
+    match /projects/{projectId}/images/{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+
+    // 2. Profile photo: profilePhoto/*
+    match /profilePhoto/{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+
+    // 3. Certificates images: certificates/{certificateId}/image/*
+    match /certificates/{certificateId}/image/{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+
+    // 4. Certificates documents (PDF, Doc, Image): certificates/{certificateId}/document/*
+    match /certificates/{certificateId}/document/{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+
+    // Backward compatibility for portfolio/*
+    match /portfolio/{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
