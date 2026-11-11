@@ -88,19 +88,22 @@ export const CvDownloadModal: React.FC<CvDownloadModalProps> = ({
     const filename = `Mateo_Padilla_CV_${lang.toUpperCase()}.pdf`;
 
     try {
-      // Generación dinámica en el navegador (html2pdf.js con corrección de FontMetrics)
+      // 1. Obtener imagen de avatar recortada en base64
       const avatarBase64 = await getSquareCroppedAvatarBase64(
         "/portfolio-image.jpeg"
       );
 
-      const offscreenWrapper = document.createElement("div");
-      offscreenWrapper.style.position = "fixed";
-      offscreenWrapper.style.left = "-10000px";
-      offscreenWrapper.style.top = "0";
-      offscreenWrapper.style.width = "794px";
-      offscreenWrapper.style.zIndex = "-9999";
-      offscreenWrapper.style.pointerEvents = "none";
-      offscreenWrapper.innerHTML = generateCvHtml({
+      // 2. Renderizar contenedor en el DOM con layout real
+      const renderContainer = document.createElement("div");
+      renderContainer.id = "cv-render-wrapper";
+      renderContainer.style.position = "fixed";
+      renderContainer.style.left = "0";
+      renderContainer.style.top = "0";
+      renderContainer.style.width = "794px";
+      renderContainer.style.zIndex = "-9999";
+      renderContainer.style.opacity = "0";
+      renderContainer.style.pointerEvents = "none";
+      renderContainer.innerHTML = generateCvHtml({
         data: targetData,
         language: lang,
         theme: "light",
@@ -108,17 +111,19 @@ export const CvDownloadModal: React.FC<CvDownloadModalProps> = ({
         standalone: false,
       });
 
-      document.body.appendChild(offscreenWrapper);
+      document.body.appendChild(renderContainer);
 
       try {
         if (document.fonts && document.fonts.ready) {
           await document.fonts.ready;
         }
-        await new Promise((r) => setTimeout(r, 150));
+        await new Promise((r) => setTimeout(r, 200));
 
-        const targetEl = offscreenWrapper.querySelector(
+        const targetEl = renderContainer.querySelector(
           "#cv-export-root"
         ) as HTMLElement;
+        if (!targetEl) throw new Error("No se encontró el elemento raíz del CV");
+
         const rect = targetEl.getBoundingClientRect();
         const widthPx = 794;
         const heightPx = Math.ceil(
@@ -160,8 +165,8 @@ export const CvDownloadModal: React.FC<CvDownloadModalProps> = ({
 
         onClose();
       } finally {
-        if (offscreenWrapper.parentNode) {
-          offscreenWrapper.parentNode.removeChild(offscreenWrapper);
+        if (renderContainer.parentNode) {
+          renderContainer.parentNode.removeChild(renderContainer);
         }
       }
     } catch (err) {

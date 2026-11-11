@@ -95,12 +95,18 @@ export class PortfolioService {
   }
 
   /**
-   * Consulta el contenido bilingüe desde Firestore. Si no existe documento remoto o no hay conexión, retorna null de forma segura.
+   * Consulta el contenido bilingüe desde Firestore. Si no existe documento remoto, hay timeout o no hay conexión, retorna null de forma segura.
    */
   async getRemoteContent(): Promise<BilingualPortfolioContent | null> {
     try {
-      const docSnap = await getDoc(this.getDocRef("content"));
-      if (docSnap.exists()) {
+      // Timeout de 4 segundos para evitar que peticiones lentas o bloqueadas cuelguen en background
+      const fetchPromise = getDoc(this.getDocRef("content"));
+      const timeoutPromise = new Promise<null>((resolve) =>
+        setTimeout(() => resolve(null), 4000)
+      );
+
+      const docSnap = await Promise.race([fetchPromise, timeoutPromise]);
+      if (docSnap && "exists" in docSnap && docSnap.exists()) {
         const data = docSnap.data();
         return {
           es: data.es as PortfolioData,

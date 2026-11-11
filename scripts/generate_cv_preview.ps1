@@ -44,7 +44,7 @@ $htmlTemplate = @'
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mateo Padilla Peña — Curriculum Vitae (ES / EN • Light / Dark)</title>
+  <title>Mateo Padilla Pe&ntilde;a &mdash; Curriculum Vitae (ES / EN &bull; Light / Dark)</title>
   <link rel="icon" type="image/png" sizes="64x64" href="__FAVICON_DATA_URI__" />
   <link rel="shortcut icon" type="image/png" href="__FAVICON_DATA_URI__" />
   <link rel="apple-touch-icon" href="__FAVICON_DATA_URI__" />
@@ -398,7 +398,7 @@ $htmlTemplate = @'
       color: #38bdf8;
     }
 
-    /* Bloques de Sección */
+    /* Bloques de Seccion */
     #cv-export-root .cv-section {
       margin-bottom: 21px;
     }
@@ -463,7 +463,7 @@ $htmlTemplate = @'
       color: #cbd5e1;
     }
 
-    /* Línea de Tiempo de Experiencia */
+    /* Linea de Tiempo de Experiencia */
     #cv-export-root .timeline-container {
       display: flex;
       flex-direction: column;
@@ -995,11 +995,11 @@ $htmlTemplate = @'
         </span>
         <div class="switch-pill-group">
           <button type="button" class="switch-btn active" id="btn-lang-es" onclick="setCvLanguage('es')">
-            <span>🇪🇸</span>
-            <span>Español</span>
+            <span>&#127466;&#127480;</span>
+            <span>Espa&ntilde;ol</span>
           </button>
           <button type="button" class="switch-btn" id="btn-lang-en" onclick="setCvLanguage('en')">
-            <span>🇺🇸</span>
+            <span>&#127482;&#127480;</span>
             <span>English</span>
           </button>
         </div>
@@ -1028,7 +1028,7 @@ $htmlTemplate = @'
 
     <button type="button" class="download-pdf-btn" id="btn-download-pdf" onclick="downloadCurrentCvPdf()">
       <svg id="download-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-      <span id="download-btn-text">Descargar PDF (ES • Light)</span>
+      <span id="download-btn-text">Descargar PDF (ES &bull; Light)</span>
     </button>
   </div>
 
@@ -1058,14 +1058,14 @@ $htmlTemplate = @'
         profile: isEs ? "Perfil Profesional" : "Professional Profile",
         experience: isEs ? "Experiencia Profesional" : "Professional Experience",
         projects: isEs ? "Proyectos Destacados" : "Featured Projects",
-        skills: isEs ? "Habilidades Técnicas" : "Technical Skills",
+        skills: isEs ? "Habilidades T\u00E9cnicas" : "Technical Skills",
         backend: isEs ? "Backend & Arquitectura" : "Backend & Architecture",
         frontend: isEs ? "Frontend & UI Moderno" : "Frontend & Modern UI",
         database: isEs ? "Bases de Datos & Cloud" : "Databases & Cloud",
         certifications: isEs ? "Certificados & Cursos" : "Certifications & Courses",
         references: isEs ? "Referencias Profesionales" : "Professional References",
         native: isEs ? "Nativo" : "Native",
-        spanish: isEs ? "Español" : "Spanish",
+        spanish: isEs ? "Espa\u00F1ol" : "Spanish",
         english: "English"
       };
 
@@ -1074,7 +1074,7 @@ $htmlTemplate = @'
 
       const expHtml = (data.experience || []).map(function(exp) {
         const achHtml = (exp.achievements || []).map(function(ach) {
-          return '<div class="achievement-item"><span class="achievement-bullet">▹</span><span>' + ach + '</span></div>';
+          return '<div class="achievement-item"><span class="achievement-bullet">&#9656;</span><span>' + ach + '</span></div>';
         }).join("");
         return (
           '<div class="timeline-job">' +
@@ -1084,7 +1084,7 @@ $htmlTemplate = @'
                 '<h3 class="job-role">' + exp.position + '</h3>' +
                 '<div class="job-company-row">' +
                   '<span class="job-company">' + exp.company + '</span>' +
-                  '<span style="opacity:0.4;">•</span>' +
+                  '<span style="opacity:0.4;">&bull;</span>' +
                   '<span class="job-location">' +
                     '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>' +
                     exp.location +
@@ -1233,8 +1233,8 @@ $htmlTemplate = @'
             '</div>' +
             '<div class="cert-list">' + certsHtml + '</div>' +
             '<div>' +
-              '<div class="lang-item"><div class="lang-header"><span>' + labels.spanish + '</span><span class="lang-level-badge">' + labels.native + ' • 100%</span></div><div class="lang-track"><div class="lang-fill" style="width: 100%;"></div></div></div>' +
-              '<div class="lang-item"><div class="lang-header"><span>' + labels.english + '</span><span class="lang-level-badge">B2 Professional • 75%</span></div><div class="lang-track"><div class="lang-fill" style="width: 75%;"></div></div></div>' +
+              '<div class="lang-item"><div class="lang-header"><span>' + labels.spanish + '</span><span class="lang-level-badge">' + labels.native + ' \u2022 100%</span></div><div class="lang-track"><div class="lang-fill" style="width: 100%;"></div></div></div>' +
+              '<div class="lang-item"><div class="lang-header"><span>' + labels.english + '</span><span class="lang-level-badge">B2 Professional \u2022 75%</span></div><div class="lang-track"><div class="lang-fill" style="width: 75%;"></div></div></div>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -1249,8 +1249,8 @@ $htmlTemplate = @'
         '</section>' +
 
         '<footer class="cv-footer">' +
-          '<span>' + data.personal.name + ' • Full Stack Developer</span>' +
-          '<span>' + data.personal.email + ' • ' + data.personal.phone + '</span>' +
+          '<span>' + data.personal.name + ' \u2022 Full Stack Developer</span>' +
+          '<span>' + data.personal.email + ' \u2022 ' + data.personal.phone + '</span>' +
         '</footer>';
     }
 
@@ -1271,8 +1271,8 @@ $htmlTemplate = @'
       const dlText = document.getElementById("download-btn-text");
       if (dlText) {
         dlText.textContent = isEs
-          ? "Descargar PDF (" + currentLang.toUpperCase() + " • " + themeCap + ")"
-          : "Download PDF (" + currentLang.toUpperCase() + " • " + themeCap + ")";
+          ? "Descargar PDF (" + currentLang.toUpperCase() + " \u2022 " + themeCap + ")"
+          : "Download PDF (" + currentLang.toUpperCase() + " \u2022 " + themeCap + ")";
       }
     }
 
@@ -1316,58 +1316,85 @@ $htmlTemplate = @'
         dlText.textContent = currentLang === "es" ? "Generando PDF..." : "Generating PDF...";
       }
 
-      try {
-        // Generación dinámica en el navegador (html2pdf.js con corrección de FontMetrics)
-        const target = document.getElementById("cv-export-root");
-        if (typeof html2pdf !== "undefined" && target) {
-          if (document.fonts && document.fonts.ready) {
-            await document.fonts.ready;
-          }
-          const rect = target.getBoundingClientRect();
-          const widthPx = 794;
-          const heightPx = Math.ceil(Math.max(target.scrollHeight, rect.height, 1123));
-          const pdfWidthMm = 210;
-          const pdfHeightMm = Math.ceil((heightPx * pdfWidthMm) / widthPx) + 2;
+      const sourceRoot = document.getElementById("cv-export-root");
+      if (typeof html2pdf === "undefined" || !sourceRoot) {
+        window.print();
+        if (btn) btn.disabled = false;
+        updateToolbarLabels();
+        return;
+      }
 
-          await html2pdf()
-            .set({
-              margin: 0,
-              filename: filename,
-              image: { type: "jpeg", quality: 0.98 },
-              html2canvas: {
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: currentTheme === "dark" ? "#0b1120" : "#ffffff",
-                width: widthPx,
-                height: heightPx,
-                windowWidth: widthPx,
-                windowHeight: heightPx,
-                scrollX: 0,
-                scrollY: 0
-              },
-              jsPDF: {
-                unit: "mm",
-                format: [pdfWidthMm, pdfHeightMm],
-                orientation: "portrait"
-              },
-              pagebreak: { mode: ["avoid-all"] }
-            })
-            .from(target)
-            .save();
-        } else {
-          window.print();
+      // 1. Contenedor temporal aislado en (0,0) para evitar desfases de scroll, toolbar y margin auto
+      const renderContainer = document.createElement("div");
+      renderContainer.id = "cv-pdf-render-container";
+      renderContainer.style.cssText = "position: fixed; left: 0; top: 0; width: 794px; z-index: -9999; opacity: 0; pointer-events: none;";
+
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
         }
+
+        // 2. Clonar el elemento de CV con alineacion exacta a (0,0)
+        const clone = sourceRoot.cloneNode(true);
+        clone.style.margin = "0";
+        clone.style.boxShadow = "none";
+        clone.style.borderRadius = "0";
+        clone.style.width = "794px";
+        clone.style.maxWidth = "794px";
+        clone.setAttribute("data-theme", currentTheme);
+
+        renderContainer.appendChild(clone);
+        document.body.appendChild(renderContainer);
+
+        await new Promise(function(r) { setTimeout(r, 150); });
+
+        const rect = clone.getBoundingClientRect();
+        const widthPx = 794;
+        const heightPx = Math.ceil(Math.max(clone.scrollHeight, rect.height, 1123));
+        const pdfWidthMm = 210;
+        const pdfHeightMm = Math.ceil((heightPx * pdfWidthMm) / widthPx) + 2;
+
+        await html2pdf()
+          .set({
+            margin: 0,
+            filename: filename,
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              allowTaint: true,
+              backgroundColor: currentTheme === "dark" ? "#0b1120" : "#ffffff",
+              width: widthPx,
+              height: heightPx,
+              windowWidth: widthPx,
+              windowHeight: heightPx,
+              scrollX: 0,
+              scrollY: 0,
+              x: 0,
+              y: 0
+            },
+            jsPDF: {
+              unit: "mm",
+              format: [pdfWidthMm, pdfHeightMm],
+              orientation: "portrait"
+            },
+            pagebreak: { mode: ["avoid-all"] }
+          })
+          .from(clone)
+          .save();
       } catch (err) {
         console.error("Error generating PDF:", err);
         window.print();
       } finally {
+        if (renderContainer.parentNode) {
+          renderContainer.parentNode.removeChild(renderContainer);
+        }
         if (btn) btn.disabled = false;
         updateToolbarLabels();
       }
     }
 
-    // Inicializar según query params ?lang=es|en y ?theme=light|dark
+    // Inicializar segun query params ?lang=es|en y ?theme=light|dark
     (function initPreview() {
       let initialLang = "es";
       let initialTheme = "light";
@@ -1396,6 +1423,9 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText((Join-Path $PWD "cv.html"), $htmlContent, $utf8NoBom)
 [System.IO.File]::WriteAllText((Join-Path $PWD "cv-preview.html"), $htmlContent, $utf8NoBom)
 [System.IO.File]::WriteAllText((Join-Path $PWD "public\cv-preview.html"), $htmlContent, $utf8NoBom)
+if (Test-Path (Join-Path $PWD "out")) {
+    [System.IO.File]::WriteAllText((Join-Path $PWD "out\cv-preview.html"), $htmlContent, $utf8NoBom)
+}
 [System.IO.File]::WriteAllText("C:\Users\mateo\.gemini\antigravity\brain\11868d65-8eb8-49d2-a890-a8c031297038\cv_preview.html", $htmlContent, $utf8NoBom)
 
 Write-Output "Generated dynamic bilingual Light/Dark CV preview files with +1px extra Y-axis spacing successfully."

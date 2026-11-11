@@ -44,6 +44,8 @@ export function generateCvHtml({
   ];
 
   const scopedStyles = `
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
     /* Fix html2canvas FontMetrics baseline calculation broken by Tailwind Preflight (img { display: block }) */
     img[src^="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP"] {
       display: inline !important;
@@ -781,8 +783,8 @@ export function generateCvHtml({
   `;
 
   const cvMarkup = `
-  <style>${scopedStyles}</style>
   <div id="cv-export-root" class="cv-document" data-theme="${theme}">
+    <style>${scopedStyles}</style>
     <header class="header-card">
       <div class="avatar-wrapper">
         <img src="${avatarBase64}" alt="${data.personal.name}" class="avatar-img" crossorigin="anonymous" />

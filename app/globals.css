@@ -12,47 +12,47 @@
     color-scheme: light;
   }
 
-  --background: oklch(0.985 0.005 240);
-  --foreground: oklch(0.145 0.02 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0.02 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0.02 260);
-  --primary: oklch(0.52 0.22 255);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 240);
-  --secondary-foreground: oklch(0.2 0.03 260);
-  --muted: oklch(0.95 0.01 240);
-  --muted-foreground: oklch(0.48 0.03 250);
-  --accent: oklch(0.94 0.03 245);
-  --accent-foreground: oklch(0.3 0.15 255);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.91 0.01 240);
-  --input: oklch(0.91 0.01 240);
-  --ring: oklch(0.55 0.22 255);
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #eff6ff;
+  --accent-foreground: #1d4ed8;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #3b82f6;
 }
 
 .dark {
-  --background: oklch(0.11 0.025 255);
-  --foreground: oklch(0.98 0.005 240);
-  --card: oklch(0.14 0.03 255);
-  --card-foreground: oklch(0.98 0.005 240);
-  --popover: oklch(0.14 0.03 255);
-  --popover-foreground: oklch(0.98 0.005 240);
-  --primary: oklch(0.7 0.18 230);
-  --primary-foreground: oklch(0.1 0.03 255);
-  --secondary: oklch(0.18 0.035 255);
-  --secondary-foreground: oklch(0.98 0.005 240);
-  --muted: oklch(0.17 0.03 255);
-  --muted-foreground: oklch(0.68 0.03 240);
-  --accent: oklch(0.2 0.05 250);
-  --accent-foreground: oklch(0.85 0.12 230);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.22 0.03 255);
-  --input: oklch(0.22 0.03 255);
-  --ring: oklch(0.7 0.18 230);
+  --background: #090d16;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #38bdf8;
+  --primary-foreground: #020617;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e3a8a;
+  --accent-foreground: #7dd3fc;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #38bdf8;
 }
 
 @theme {
@@ -90,12 +90,12 @@ body {
 
 /* Custom subtle scrollbar */
 :root {
-  scrollbar-color: oklch(0.7 0.02 240) transparent;
+  scrollbar-color: #94a3b8 transparent;
   scrollbar-width: thin;
 }
 
 .dark {
-  scrollbar-color: oklch(0.3 0.03 255) transparent;
+  scrollbar-color: #334155 transparent;
 }
 
 @keyframes slide-in {
@@ -126,11 +126,11 @@ body {
 
 /* Glow effects */
 .glow-primary {
-  box-shadow: 0 0 40px -10px oklch(0.6 0.2 245 / 0.35);
+  box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.35);
 }
 
 .glow-card {
-  box-shadow: 0 0 30px -15px oklch(0.6 0.2 245 / 0.15);
+  box-shadow: 0 0 30px -15px rgba(37, 99, 235, 0.15);
 }
 
 /* Fix html2canvas FontMetrics baseline calculation broken by Tailwind Preflight (img { display: block }) */
